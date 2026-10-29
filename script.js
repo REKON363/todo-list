@@ -1,4 +1,3 @@
-// Отримання елементів DOM
 const todoForm = document.getElementById('todo-form');
 const todoInput = document.getElementById('todo-input');
 const todoList = document.getElementById('todo-list');
@@ -10,14 +9,11 @@ const clearCompletedBtn = document.getElementById('clear-completed-btn');
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 let currentFilter = 'all';
 
-// --- ФУНКЦІЇ РОБОТИ З LOCALSTORAGE ---
-
 // Збереження масиву у localStorage
 function saveToLocalStorage() {
   localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-// --- ФУНКЦІЇ ЛОГІКИ ЗАВДАНЬ ---
 
 // Оновлення лічильника невиконаних завдань
 function updateCounter() {
@@ -33,7 +29,7 @@ function renderTodos() {
   const filteredTodos = todos.filter(todo => {
     if (currentFilter === 'active') return !todo.completed;
     if (currentFilter === 'completed') return todo.completed;
-    return true; // 'all'
+    return true; 
   });
 
   filteredTodos.forEach(todo => {
@@ -128,7 +124,7 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
-// --- ОБРОБНИКИ ПОДІЙ ---
+//ОБРОБНИКИ ПОДІЙ
 
 todoForm.addEventListener('submit', (e) => {
   e.preventDefault();
